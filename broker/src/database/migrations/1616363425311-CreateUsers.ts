@@ -3,7 +3,13 @@ import {
 } from 'typeorm';
 import { hashSync } from 'bcrypt';
 
+const defaultAdminName = process.env.DEFAULT_ADMIN_NAME;
+const defaultAdminEmail = process.env.DEFAULT_ADMIN_EMAIL;
+const defaultAdminPassword = process.env.DEFAULT_ADMIN_PASSWORD;
+
 export class CreateUsers1616363425311 implements MigrationInterface {
+  name?: string;
+
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(new Table({
       name: 'users',
@@ -88,7 +94,10 @@ export class CreateUsers1616363425311 implements MigrationInterface {
       .into('users')
       .values([
         {
-          name: 'admin', email: 'admin@email.com', password: hashSync('admin', 10), role: 'admin',
+          name: defaultAdminName,
+          email: defaultAdminEmail,
+          password: hashSync(defaultAdminPassword, 10),
+          role: 'admin',
         },
       ])
       .execute();

@@ -101,7 +101,7 @@ class BotService {
 
   sendTextMessage(message: messageTextInterface) {
     const { from, to, text } = message;
-    const client = globalClients[`${from}${numberComplement}`];
+    const client = globalClients[from];
 
     if (!client) {
       throw new AppError('Client do not exists or is not active.', 401);
