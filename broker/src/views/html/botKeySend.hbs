@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            outline: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #content {
+            border: 1px solid #4caf50;
+            border-radius: 8px;
+            padding: 10px;
+        }
+
+        header {
+            margin: 15px 0;
+        }
+
+        main {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        main p {
+            margin-bottom: 8px;
+        }
+
+        footer {
+            margin-top: 80px;
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="content">
+        <header>
+            <p>Hi, <b>{{client_name}}</b>.</p>
+            <span>
+                There is your <b>bot key</b>. He is required when use api whats broker.
+            </span>
+            <span>
+                <p>
+                    Please, store <b>safely</b>.
+                </p>
+            </span>
+
+        </header>
+
+        <main>
+            <strong>{{bot_key}}</strong>
+        </main>
+
+        <footer>
+            <span>Sincerely, <b>equipe do projeto</b></span>
+        </footer>
+    </div>
+</body>
+
+</html>
