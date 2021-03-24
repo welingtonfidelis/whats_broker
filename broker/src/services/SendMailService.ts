@@ -2,16 +2,21 @@ import * as sendgridmail from '@sendgrid/mail';
 
 import { sendMailInterface } from '../interfaces';
 
-const SENDGRID_KEY = process.env.SENDGRID_API_KEY;
-const EMAIL_FROM = 'no-replay@whatsbroker.com';
-
-sendgridmail.setApiKey(SENDGRID_KEY);
-
 class SendMailService {
+  sendGridKey: string;
+
+  emailFrom: string = 'no-replay@whatsbroker.com';
+
+  constructor() {
+    this.sendGridKey = process.env.SENDGRID_API_KEY;
+
+    sendgridmail.setApiKey(this.sendGridKey);
+  }
+
   sendMail(mailInfo: sendMailInterface) {
     return sendgridmail.send({
       to: mailInfo.to,
-      from: EMAIL_FROM,
+      from: this.emailFrom,
       subject: mailInfo.subject,
       html: mailInfo.message,
     });

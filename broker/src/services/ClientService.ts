@@ -8,8 +8,6 @@ import { SendMailService } from './SendMailService';
 import { HtmlService } from './HtmlService';
 
 const clientRepository = new ClientRepository();
-const sendMailService = new SendMailService();
-const htmlService = new HtmlService();
 
 class ClientService {
   total() {
@@ -21,6 +19,9 @@ class ClientService {
   }
 
   async store(client: clientCreateInterface) {
+    const sendMailService = new SendMailService();
+    const htmlService = new HtmlService();
+
     const insertedClient = await clientRepository.store(client);
 
     const jwtSecret: string = process.env.JWT_SECRET_BOT;
@@ -60,10 +61,6 @@ class ClientService {
 
   delete(id: number) {
     return clientRepository.delete(id);
-  }
-
-  deleteByNumber(clientNumber: string) {
-    return clientRepository.deleteByNumber(clientNumber);
   }
 }
 
